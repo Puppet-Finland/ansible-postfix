@@ -1,0 +1,13 @@
+# Operating system abstraction
+postfix_newaliases: "{{ __postfix_newaliases }}"
+postfix_package_name: "{{ __postfix_package_name }}"
+postfix_pidfile: "{{ __postfix_pidfile }}"
+postfix_postmap: "{{ __postfix_postmap }}"
+postfix_sasl_passwd: "{{ __postfix_sasl_passwd }}"
+postfix_service_name: "{{ __postfix_service_name }}"
+postfix_service_start: "{{ __postfix_service_start }}"
+postfix_service_stop: "{{ __postfix_service_stop }}"
+
+# Policy
+postfix_manage_monit: false
+smtp_relayhost:

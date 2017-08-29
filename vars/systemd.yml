@@ -1,0 +1,2 @@
+__postfix_service_start: "/bin/systemctl start {{ postfix_service_name }}"
+__postfix_service_stop: "/bin/systemctl stop {{ postfix_service_name }}"

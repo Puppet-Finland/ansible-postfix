@@ -1,0 +1,6 @@
+__postfix_newaliases: /usr/bin/newaliases
+__postfix_package_name: postfix
+__postfix_pidfile: /var/spool/postfix/pid/master.pid
+__postfix_postmap: /usr/sbin/postmap
+__postfix_sasl_passwd: /etc/postfix/sasl_passwd
+__postfix_service_name: postfix

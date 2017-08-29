@@ -1,0 +1,7 @@
+### THIS FILE IS MANAGED BY ANSIBLE. ANY MANUAL CHANGES WILL GET OVERWRITTEN.
+
+check process postfix with pidfile {{ postfix_pidfile }}
+   start program = "{{ postfix_service_start }}"
+   stop program = "{{ postfix_service_stop }}"
+   alert {{ monitor_email }} with reminder on 480 cycles
+

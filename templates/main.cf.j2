@@ -1,0 +1,41 @@
+### THIS FILE IS MANAGED BY ANSIBLE. ANY MANUAL CHANGES WILL GET OVERWRITTEN.
+
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+
+
+command_directory = /usr/sbin
+
+smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
+biff = no
+append_dot_mydomain = no
+readme_directory = no
+
+smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+smtpd_use_tls=yes
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+
+# Please make sure $::fqdn fact exists. If necessary, add an entry to to 
+# /etc/hosts.
+myhostname = {{ facter_networking.fqdn }}
+myorigin = {{ facter_networking.fqdn }}
+
+
+# This mail server receives mail only for itself
+mydestination = {{ facter_networking.fqdn }} localhost.{{ facter_networking.domain }} localhost
+
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 127.0.0.1 [::1]/128
+relayhost = {{ smtp_relayhost | default("") }}
+relay_domains =
+mailbox_size_limit = 0
+recipient_delimiter = +
+inet_interfaces = loopback-only
+
+smtpd_client_restrictions = permit_mynetworks, reject
+smtp_host_lookup = dns, native
+smtp_sasl_auth_enable = yes
+smtp_tls_security_level = encrypt
+smtp_sasl_tls_security_options = noanonymous
+smtp_sasl_password_maps = hash:{{ postfix_sasl_passwd }}
