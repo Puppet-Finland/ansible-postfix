@@ -10,4 +10,5 @@ postfix_service_stop: "{{ __postfix_service_stop }}"
 
 # Policy
 postfix_manage_monit: false
+smtp_auth: false
 smtp_relayhost:
