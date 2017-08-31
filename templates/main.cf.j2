@@ -19,12 +19,12 @@ smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 
 # Please make sure $::fqdn fact exists. If necessary, add an entry to to 
 # /etc/hosts.
-myhostname = {{ facter_networking.fqdn }}
-myorigin = {{ facter_networking.fqdn }}
+myhostname = {{ ansible_fqdn }}
+myorigin = {{ ansible_fqdn }}
 
 
 # This mail server receives mail only for itself
-mydestination = {{ facter_networking.fqdn }} localhost.{{ facter_networking.domain }} localhost
+mydestination = {{ ansible_fqdn }} localhost.{{ ansible_domain }} localhost
 
 mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 127.0.0.1 [::1]/128
 relayhost = {{ smtp_relayhost | default("") }}
