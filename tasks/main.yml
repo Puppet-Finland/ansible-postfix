@@ -34,7 +34,7 @@
     group: root
     mode: 0600
     line: '{{ smtp_relayhost }} {{ smtp_username }}:{{ smtp_password }}'
-  when: smtp_auth == "true"
+  when: smtp_auth == true
   notify:
     - build sasl_passwd.db
 - name: ensure that postfix service is running
