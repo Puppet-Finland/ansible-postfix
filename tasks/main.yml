@@ -26,14 +26,12 @@
   notify:
     - restart postfix
 - name: ensure that sasl_passwd has been configured
-  lineinfile:
-    path: /etc/postfix/sasl_passwd
-    state: present
-    create: yes
+  template:
+    src: templates/sasl_passwd.j2
+    dest: /etc/postfix/sasl_passwd
     owner: root
     group: root
     mode: 0600
-    line: '{{ smtp_relayhost }} {{ smtp_username }}:{{ smtp_password }}'
   when: smtp_auth == true
   notify:
     - build sasl_passwd.db
