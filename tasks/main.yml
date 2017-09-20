@@ -49,4 +49,4 @@
     mode: 0644
   notify:
     - restart monit
-  when: postfix_manage_monit == "true"
+  when: postfix_manage_monit == true
