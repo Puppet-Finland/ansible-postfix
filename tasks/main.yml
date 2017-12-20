@@ -2,7 +2,7 @@
 - include_vars: "{{ ansible_service_mgr }}.yml"
 - name: ensure that basic mailaliases have been configured
   lineinfile:
-    path: /etc/aliases
+    dest: /etc/aliases
     state: present
     create: yes
     owner: root
