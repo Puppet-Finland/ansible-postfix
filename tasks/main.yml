@@ -1,5 +1,9 @@
 - include_vars: "{{ ansible_os_family }}.yml"
 - include_vars: "{{ ansible_service_mgr }}.yml"
+- name: ensure that postfix is installed
+  package:
+    name: "{{ postfix_package_name }}"
+    state: present
 - name: ensure that basic mailaliases have been configured
   lineinfile:
     dest: /etc/aliases
@@ -12,10 +16,6 @@
   with_items: "{{ mailaliases }}"
   notify:
     - build aliases.db
-- name: ensure that postfix is installed
-  package:
-    name: "{{ postfix_package_name }}"
-    state: present
 - name: ensure that main.cf is present
   template:
     src: templates/main.cf.j2
